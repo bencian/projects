@@ -120,9 +120,7 @@ function advanceRound() {
             const newRow = document.createElement('tr');
             if (roundCount == cardsArray().length) {
                 alert('Fin de la partida!');
-                gameStarted = true;
-                document.getElementById('game-started-controls').setAttribute('hidden', true);
-                document.getElementById('game-not-started-controls').removeAttribute('hidden');
+                endGame();
                 return;
             }
             roundCount++;
@@ -259,7 +257,6 @@ function updateTotals() {
         points = 0
         const prediction = currentRound.querySelectorAll(`[data-player="${player}"] .prediction-input`)[0].value;
         const result = currentRound.querySelectorAll(`[data-player="${player}"] .result-input`)[0].value;
-        console.log(prediction, result);
         if (prediction === result) {
             points = prediction > 3 ? 20 : 10;
         }
@@ -267,6 +264,20 @@ function updateTotals() {
         currentRound.querySelectorAll(`[data-player="${player}"] .player-points`)[0].textContent = points;
         currentTotals = parseInt(totalsRow.querySelectorAll(`.player-totals[data-player="${player}"]`)[0].textContent) + points;
         totalsRow.querySelectorAll(`.player-totals[data-player="${player}"]`)[0].textContent = currentTotals;
+    });
+}
+
+function endGame() {
+    gameStarted = false;
+    document.getElementById('game-started-controls').setAttribute('hidden', true);
+    document.getElementById('game-not-started-controls').removeAttribute('hidden');
+    allPredictionInputs = document.querySelectorAll('.prediction-input');
+    allPredictionInputs.forEach(input => {
+        input.setAttribute('readonly', true);
+    });
+    allResultInputs = document.querySelectorAll('.result-input');
+    allResultInputs.forEach(input => {
+        input.setAttribute('readonly', true);
     });
 }
 

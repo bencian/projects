@@ -35,11 +35,6 @@ h1 {
     align-items: center;
 }
 
-.controls #current-round {
-    flex: 1;
-    text-align: center;
-}
-
 .controls .clear-game {
     margin-left: auto;
 }
