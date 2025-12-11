@@ -287,7 +287,7 @@ function endGame() {
 
 function startGame() {
     // Prompt user for number of cards
-    const cardsInput = prompt('Cuantas rondas sin triumfo?');
+    const cardsInput = prompt('Cuantas rondas sin triunfo?');
     
     // Validate input
     if (cardsInput === null) {
@@ -337,10 +337,20 @@ function clearRound() {
         if (confirm('¿Estás seguro de querer borrar la ronda?')) {
             allRounds = document.querySelectorAll('.round-data');
             if (allRounds.length > 1) {
-                // allRounds[allRounds.length - 1].remove();
-                // lastPlayerIndex--;
-                // updateTotals();
-                alert('No funciona todavía!');
+                totalsRow = document.getElementById('totals-row');
+                currentRound = allRounds[allRounds.length - 2];
+                allPlayers = playerIndexes();
+                allPlayers.forEach(player => {
+                    points = currentRound.querySelectorAll(`[data-player="${player}"] .player-points`)[0].textContent;
+                    currentTotals = parseInt(totalsRow.querySelectorAll(`.player-totals[data-player="${player}"]`)[0].textContent) - points;
+                    totalsRow.querySelectorAll(`.player-totals[data-player="${player}"]`)[0].textContent = currentTotals;
+                    currentRound.querySelectorAll(`[data-player="${player}"] .prediction-input`)[0].value = '';
+                    currentRound.querySelectorAll(`[data-player="${player}"] .result-input`)[0].value = '';
+                    currentRound.querySelectorAll(`[data-player="${player}"] .player-points`)[0].textContent = 0;
+                });
+                allRounds[allRounds.length - 1].remove();
+                lastPlayerIndex--;
+                roundCount--;
             } else {
                 alert('No se puede borrar la primera ronda!');
             }
