@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puntajes Podrida</title>
+    <link rel="stylesheet" href="score-tracker.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Puntajes Podrida</h1>
+        
+        <div id="game-started-controls" hidden>
+            <div class="controls">
+                <button class="add-round" onclick="advanceRound()">Próxima ronda</button>
+                <p id="current-round">Número de ronda: <span id="round-count">1</span></p>
+                <button class="clear-game" onclick="clearGame()">Borrar juego</button>
+                <button class="clear-round" onclick="clearRound()">Borrar ronda</button>
+            </div>
+        </div>
+
+        <div id="game-not-started-controls">
+            <div class="controls">
+                <button class="add-player" onclick="addPlayer()">Agregar jugador</button>
+                <button class="start-game" onclick="startGame()">Empezar a jugar</button>
+            </div>
+        </div>
+
+        <table id="scoreTable">
+            <thead>
+                <tr id="headerRow">
+                    <th rowspan="2">Cartas</th>
+                    <th class="player-header" data-player="1" colspan="3">
+                        <input type="text" value="Jugador 1" class="player-name">
+                        <button class="remove remove-btn" onclick="removePlayer(1)">×</button>
+                    </th>
+                    <th class="player-header" data-player="2" colspan="3">
+                        <input type="text" value="Jugador 2" class="player-name">
+                        <button class="remove remove-btn" onclick="removePlayer(2)">×</button>
+                    </th>
+                    <th class="player-header" data-player="3" colspan="3">
+                        <input type="text" value="Jugador 3" class="player-name">
+                        <button class="remove remove-btn" onclick="removePlayer(3)">×</button>
+                    </th>
+                    <th class="player-header" data-player="4" colspan="3">
+                        <input type="text" value="Jugador 4" class="player-name">
+                        <button class="remove remove-btn" onclick="removePlayer(4)">×</button>
+                    </th>
+                </tr>
+                <tr id="subHeaderRow">
+                    <th class="player-headers" data-player="1">Predicciones</th>
+                    <th class="player-headers" data-player="1">Resultados</th>
+                    <th class="player-headers" data-player="1">Puntos</th>
+                    <th class="player-headers" data-player="2">Predicciones</th>
+                    <th class="player-headers" data-player="2">Resultados</th>
+                    <th class="player-headers" data-player="2">Puntos</th>
+                    <th class="player-headers" data-player="3">Predicciones</th>
+                    <th class="player-headers" data-player="3">Resultados</th>
+                    <th class="player-headers" data-player="3">Puntos</th>
+                    <th class="player-headers" data-player="4">Predicciones</th>
+                    <th class="player-headers" data-player="4">Resultados</th>
+                    <th class="player-headers" data-player="4">Puntos</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr id='round-1' class="round-data">
+                    <td><text class="round-number">1</text></td>
+                    <td class="player-data" data-player="1"><input type="number" onchange="validatePrediction(1)" class="prediction-input" readonly></td>
+                    <td class="player-data" data-player="1"><input type="number" onchange="validateResult()" class="result-input" readonly></td>
+                    <td class="player-data" data-player="1"><text class="player-points" data-player="1">0</text></td>
+                    <td class="player-data" data-player="2"><input type="number" onchange="validatePrediction(2)" class="prediction-input" readonly></td>
+                    <td class="player-data" data-player="2"><input type="number" onchange="validateResult()" class="result-input" readonly></td>
+                    <td class="player-data" data-player="2"><text class="player-points" data-player="2">0</text></td>
+                    <td class="player-data" data-player="3"><input type="number" onchange="validatePrediction(3)" class="prediction-input" readonly></td>
+                    <td class="player-data" data-player="3"><input type="number" onchange="validateResult()" class="result-input" readonly></td>
+                    <td class="player-data" data-player="3"><text class="player-points" data-player="3">0</text></td>
+                    <td class="player-data" data-player="4"><input type="number" onchange="validatePrediction(4)" class="prediction-input" readonly></td>
+                    <td class="player-data" data-player="4"><input type="number" onchange="validateResult()" class="result-input" readonly></td>
+                    <td class="player-data" data-player="4"><text class="player-points" data-player="4">0</text></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr id="totals-row">
+                    <td>Total:</td>
+                    <td data-player="1" colspan="2"></td>
+                    <td class="player-totals" data-player="1">0</td>
+                    <td data-player="2" colspan="2"></td>
+                    <td class="player-totals" data-player="2">0</td>
+                    <td data-player="3" colspan="2"></td>
+                    <td class="player-totals" data-player="3">0</td>
+                    <td data-player="4" colspan="2"></td>
+                    <td class="player-totals" data-player="4">0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script src="score-tracker.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.controls #current-round {
+    flex: 1;
+    text-align: center;
+}
+
+.controls .clear-game {
+    margin-left: auto;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #5568d3;
+}
+
+button.add-player {
+    background: #48bb78;
+}
+
+button.add-player:hover {
+    background: #38a169;
+}
+
+button.add-round {
+    background: #ed8936;
+}
+
+button.start-game {
+    background: #012ef7;
+}
+
+button.start-game:hover {
+    background: #011ed9;
+}
+
+button.add-round:hover {
+    background: #dd6b20;
+}
+
+button.clear-game {
+    background: #f56565;
+}
+
+button.clear-game:hover {
+    background: #e53e3e;
+}
+
+button.clear-round {
+    background: #bb633a;
+}
+
+button.clear-round:hover {
+    background: #9f533c;
+}
+
+button.remove {
+    background: #f56565;
+}
+
+button.remove:hover {
+    background: #e53e3e;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+th {
+    background: #667eea;
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+.player-header {
+    background: #764ba2;
+}
+
+td {
+    background: white;
+}
+
+tr:nth-child(even) td {
+    background: #f7fafc;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: #f0f4ff;
+}
+
+input.round-number {
+    font-weight: 600;
+    background: #f7fafc;
+}
+
+.totals-row {
+    background: #e6fffa !important;
+    font-weight: 600;
+}
+
+.totals-row td {
+    background: #e6fffa !important;
+}
+
+.remove-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+input.last-player-input {
+    background: #db9a64 !important;
+    border-color: #db9a64 !important;
+    font-weight: 600;
+}
+
+input.last-player-input:focus {
+    background: #db9a64 !important;
+    border-color: #db9a64 !important;
+}
+
