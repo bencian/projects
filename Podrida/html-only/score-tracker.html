@@ -10,10 +10,10 @@
     <div class="container">
         <h1>Puntajes Podrida</h1>
         
-        <div id="game-started-controls" hidden>
+        <div id="game-started-controls-1" hidden>
             <div class="controls">
                 <button class="add-round" onclick="advanceRound()">Próxima ronda</button>
-                <button class="clear-game" onclick="clearGame()">Borrar juego</button>
+                <button class="clear-game" onclick="clearGame()">Reiniciar juego</button>
                 <button class="clear-round" onclick="clearRound()">Borrar ronda</button>
             </div>
         </div>
@@ -22,6 +22,12 @@
             <div class="controls">
                 <button class="add-player" onclick="addPlayer()">Agregar jugador</button>
                 <button class="start-game" onclick="startGame()">Empezar a jugar</button>
+            </div>
+        </div>
+
+        <div id="game-ended-controls" hidden>
+            <div class="controls">
+                <button class="new-game" onclick="clearGame()">Nuevo juego</button>
             </div>
         </div>
 
@@ -92,6 +98,13 @@
                 </tr>
             </tfoot>
         </table>
+        <br>
+        <div id="game-started-controls-2" hidden>
+            <div class="controls">
+                <button class="add-round" onclick="advanceRound()">Próxima ronda</button>
+                <button class="clear-round" onclick="clearRound()">Borrar ronda</button>
+            </div>
+        </div>
     </div>
 
     <script src="score-tracker.js"></script>

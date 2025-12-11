@@ -39,6 +39,10 @@ h1 {
     margin-left: auto;
 }
 
+.controls .clear-round {
+    margin-left: auto;
+}
+
 button {
     padding: 10px 20px;
     border: none;

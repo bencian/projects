@@ -269,8 +269,12 @@ function updateTotals() {
 
 function endGame() {
     gameStarted = false;
-    document.getElementById('game-started-controls').setAttribute('hidden', true);
-    document.getElementById('game-not-started-controls').removeAttribute('hidden');
+    document.getElementById('game-started-controls-1').setAttribute('hidden', true);
+    document.getElementById('game-started-controls-2').setAttribute('hidden', true);
+    document.getElementById('game-ended-controls').removeAttribute('hidden');
+    document.getElementsByClassName('remove').forEach(button => {
+        button.setAttribute('hidden', true);
+    });
     allPredictionInputs = document.querySelectorAll('.prediction-input');
     allPredictionInputs.forEach(input => {
         input.setAttribute('readonly', true);
@@ -297,7 +301,8 @@ function startGame() {
     }
 
     noTrumpRounds = cards;
-    document.getElementById('game-started-controls').removeAttribute('hidden');
+    document.getElementById('game-started-controls-1').removeAttribute('hidden');
+    document.getElementById('game-started-controls-2').removeAttribute('hidden');
     document.getElementById('game-not-started-controls').setAttribute('hidden', true);
 
     allPredictionInputs = document.querySelectorAll('.prediction-input');
@@ -330,7 +335,15 @@ function clearRound() {
         return;
     } else {
         if (confirm('¿Estás seguro de querer borrar la ronda?')) {
-            // delete round
+            allRounds = document.querySelectorAll('.round-data');
+            if (allRounds.length > 1) {
+                // allRounds[allRounds.length - 1].remove();
+                // lastPlayerIndex--;
+                // updateTotals();
+                alert('No funciona todavía!');
+            } else {
+                alert('No se puede borrar la primera ronda!');
+            }
         }
     }
 }
