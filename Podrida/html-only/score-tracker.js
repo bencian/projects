@@ -145,7 +145,7 @@ function advanceRound() {
                 const resultCell = document.createElement('td');
                 resultCell.classList.add('player-data');
                 resultCell.setAttribute('data-player', playerNumber);
-                resultCell.innerHTML = `<input type="number" onchange="validateResult()" class="result-input">`;
+                resultCell.innerHTML = `<input type="number" onchange="validateResult(${playerNumber})" class="result-input">`;
                 newRow.appendChild(resultCell);
                 
                 // Points cell
@@ -202,10 +202,20 @@ function cardsAmount() {
 
 
 function validatePrediction(playerIndex) {
+    allRounds = document.querySelectorAll('.round-data');
+    currentRound = allRounds[allRounds.length - 1];
+    const cardAmount = parseInt(currentRound.querySelector('.round-number').textContent[0]);
+    playerInput = parseInt(currentRound.querySelectorAll(`[data-player="${playerIndex}"] .prediction-input`)[0].value);
+    if (playerInput > cardAmount) {
+        alert('Las predicciones no pueden ser mayor a la cantidad de cartas repartidas.');
+        return;
+    }
+    if (playerInput < 0) {
+        alert('... tonto');
+        return;
+    }
+        
     if (playerIndex === getLastPlayer()) {
-        allRounds = document.querySelectorAll('.round-data');
-        currentRound = allRounds[allRounds.length - 1];
-        const cardAmount = parseInt(currentRound.querySelector('.round-number').textContent[0]);
         allPredictions = Array.from(currentRound.getElementsByClassName('prediction-input')).map(input => parseInt(input.value));
         allPredictionsSum = allPredictions.reduce((a, b) => a + b, 0);
         if (allPredictionsSum === cardAmount) {
@@ -215,10 +225,19 @@ function validatePrediction(playerIndex) {
     }    
 }
 
-function validateResult() {
+function validateResult(playerIndex) {
     allRounds = document.querySelectorAll('.round-data');
     currentRound = allRounds[allRounds.length - 1];
     const cardAmount = parseInt(currentRound.querySelector('.round-number').textContent[0]);
+    playerInput = parseInt(currentRound.querySelectorAll(`.result-input[data-player="${playerIndex}"]`)[0].value);
+    if (playerInput > cardAmount) {
+        alert('Las rondas ganadas no pueden ser mayor a la cantidad de cartas repartidas.');
+        return;
+    }
+    if (playerInput < 0) {
+        alert('... tonto');
+        return;
+    }
     allResults = Array.from(currentRound.getElementsByClassName('result-input')).map(input => parseInt(input.value));
     
     if (allResults.some(value => isNaN(value))) {
