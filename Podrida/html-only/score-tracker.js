@@ -229,7 +229,7 @@ function validateResult(playerIndex) {
     allRounds = document.querySelectorAll('.round-data');
     currentRound = allRounds[allRounds.length - 1];
     const cardAmount = parseInt(currentRound.querySelector('.round-number').textContent[0]);
-    playerInput = parseInt(currentRound.querySelectorAll(`.result-input[data-player="${playerIndex}"]`)[0].value);
+    playerInput = parseInt(currentRound.querySelectorAll(`[data-player="${playerIndex}"] .result-input`)[0].value);
     if (playerInput > cardAmount) {
         alert('Las rondas ganadas no pueden ser mayor a la cantidad de cartas repartidas.');
         return;
